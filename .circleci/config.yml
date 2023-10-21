@@ -1,0 +1,122 @@
+version: 2.1
+orbs:
+  docker: circleci/docker@2.1.4 #allows us to use docker orbs's command
+  # heroku: circleci/heroku@2.0.0 #allows us to use heroku orbs's command
+  # snyk: snyk/snyk@1.5.0 #3rd party orb of snyk
+jobs:
+  build:
+    # working_directory: ~/app
+    docker:
+      - image: circleci/eclipse-temurin:17-jdk-jammy
+    steps:
+      - checkout
+      - run: mvn clean install
+      # - run:
+      #     name: Build Docker Image
+      #     command: |
+      #       docker build \
+      #         --tag my-image:latest \
+      #         --build-arg JAR_FILE=target/my-app.jar \
+      #         .
+      # - run:
+      #     name: Login to Docker Registry
+      #     command: |
+      #       echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      # - run:
+      #     name: Push Docker Image
+      #     command: |
+      #       docker tag my-image:latest my-registry/my-image:latest
+      #       docker push my-registr
+  test:
+    docker:
+      image: circleci/eclipse-temurin:17-jdk-jammy
+    steps:
+      - checkout
+      - run: mvn test
+  build-and-push:
+    executor: docker/docker #state env that we are using
+    steps:
+      - setup_remote_docker #allows us to run docker commands just in case
+      - checkout
+      - docker/check
+      - docker/build:
+          image: limzihan/education-space
+          tag: <<pipeline.git.tag>>
+      - docker/push:
+          image: limzihan/education-space
+          tag: <<pipeline.git.tag>>
+  scan:
+    docker:
+      - image: circleci/eclipse-temurin:17-jdk-jammy
+    environment:
+      IMAGE_NAME: limzihan/education-space # the IMAGE_NAME is a variable we could use in our jobs/steps
+    steps:
+      - checkout
+      - setup_remote_docker
+      - docker/check
+      - run: docker build -t $IMAGE_NAME .
+      # $IMAGE_NAME gets the value of the IMAGE_NAME from the environment defined above.
+      - snyk/scan:
+          docker-image-name: $IMAGE_NAME
+  deploy:
+    docker:
+      - image: circleci/eclipse-temurin:17-jdk-jammy
+    steps:
+      - setup_remote_docker
+      - heroku/install #installs heroku cli for our run command
+      - checkout
+      - run:
+          name: Heroku Container Push #the name of the group of commands we are runnings (optional)
+          command: | #the pip '|' runs the series of commands
+            heroku container:login
+            heroku container:push web -a limzihan-su-devops
+            heroku container:release web -a limzihan-su-devops
+          # The push command pushes the image to heroku's container registry
+          # The relase command deplots the image from heroku's container registry
+workflow:
+  ci-workflow:
+    # The ci_flow workflow consists of the build, test, and scan jobs 
+    # and is triggered exclusively by the develop branch.
+    jobs:
+      - build:
+        filters:
+          branches:
+            only: deploy
+      - test:
+          requires:
+            - build
+          filters:
+            branches:
+              only: deploy
+      - scan:
+          requires:
+            - build
+  cicd-workflow:
+    # The cicd_flow workflow consists of the build, test, build-and-push, 
+    # and scan jobs and is triggered by the release branch or tags matching 
+    # the format (like v1.0.0).
+    jobs:
+      - build:
+        filters:
+          branches:
+            only: release
+      - test:
+          requires:
+            - build
+          filters:
+            branches:
+              only: release
+      - build-and-push:
+          requires:
+            - test
+          filters:
+            branches:
+              only: release
+            tags:
+              only: /^v./
+            branches:
+              ignore: /./
+      - scan:
+          requires:
+            - build
+
