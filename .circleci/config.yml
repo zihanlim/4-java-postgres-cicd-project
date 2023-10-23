@@ -2,8 +2,8 @@ version: 2.1
 
 orbs:
   docker: circleci/docker@2.1.4
-  snyk: snyk/snyk@1.5.0 #3rd party orb of snyk
-  heroku: circleci/heroku@2.0.0 #allows us to use heroku orbs's command
+  snyk: snyk/snyk@1.5.0 # 3rd party orb of snyk
+  heroku: circleci/heroku@2.0.0 # allows us to use heroku orbs's command
 
 jobs:
   build:
@@ -35,7 +35,7 @@ jobs:
 
   scan:
     docker:
-      - image: maven:3.6.3
+      - image: maven:3.8-jdk-17
     environment:
       IMAGE_NAME: limzihan/education-space
     steps:
