@@ -1,5 +1,6 @@
 FROM maven:3.6.3 AS maven
 # FROM eclipse-temurin:17-jdk-jammy
+# FROM openjdk:17
 
 WORKDIR /app
 
