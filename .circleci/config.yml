@@ -112,7 +112,6 @@ workflow:
           filters:
             tags:
               only: /^v./
-            branches:
               ignore: /./
       - scan:
           requires:
