@@ -8,14 +8,16 @@ orbs:
 jobs:
   build:
     docker:
-      - image: maven:3.6.3
+      - image: maven:3.8.2-openjdk-17
+
     steps:
       - checkout
       - run: mvn clean install
 
   test:
     docker:
-      - image: maven:3.6.3
+      - image: maven:3.8.2-openjdk-17
+
     steps:
       - checkout
       - run: mvn test
@@ -35,7 +37,8 @@ jobs:
 
   scan:
     docker:
-      - image: maven:3.6.3
+      - image: maven:3.8.2-openjdk-17
+
     environment:
       IMAGE_NAME: limzihan/education-space
     steps:
@@ -48,7 +51,8 @@ jobs:
 
   deploy:
     docker:
-      - image: maven:3.6.3
+      - image: maven:3.8.2-openjdk-17
+
     steps:
       - setup_remote_docker
       - heroku/install

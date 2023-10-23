@@ -1,4 +1,4 @@
-FROM maven:3.6.3 AS maven
+FROM maven:3.8.2-openjdk-17 AS maven
 # FROM eclipse-temurin:17-jdk-jammy
 # FROM openjdk:17
 
