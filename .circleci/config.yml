@@ -2,20 +2,20 @@ version: 2.1
 
 orbs:
   docker: circleci/docker@2.1.4
-  snyk: snyk/snyk@1.5.0 # 3rd party orb of snyk
-  heroku: circleci/heroku@2.0.0 # allows us to use heroku orbs's command
+  snyk: snyk/snyk@1.5.0 #3rd party orb of snyk
+  heroku: circleci/heroku@2.0.0 #allows us to use heroku orbs's command
 
 jobs:
   build:
     docker:
-      - image: maven:3.8-jdk-17
+      - image: maven:3.6.3
     steps:
       - checkout
       - run: mvn clean install
 
   test:
     docker:
-      - image: maven:3.8-jdk-17
+      - image: maven:3.6.3
     steps:
       - checkout
       - run: mvn test
@@ -35,7 +35,7 @@ jobs:
 
   scan:
     docker:
-      - image: maven:3.8-jdk-17
+      - image: maven:3.6.3
     environment:
       IMAGE_NAME: limzihan/education-space
     steps:
@@ -48,7 +48,7 @@ jobs:
 
   deploy:
     docker:
-      - image: maven:3.8-jdk-17
+      - image: maven:3.6.3
     steps:
       - setup_remote_docker
       - heroku/install
