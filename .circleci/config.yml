@@ -75,7 +75,7 @@ jobs:
           # The relase command deplots the image from heroku's container registry
 workflow:
   ci-workflow:
-    # The ci_flow workflow consists of the build, test, and scan jobs 
+    # The ci_flow workflow consists of the build, test, and scan jobs
     # and is triggered exclusively by the develop branch.
     jobs:
       - build:
@@ -92,8 +92,8 @@ workflow:
           requires:
             - build
   cicd-workflow:
-    # The cicd_flow workflow consists of the build, test, build-and-push, 
-    # and scan jobs and is triggered by the release branch or tags matching 
+    # The cicd_flow workflow consists of the build, test, build-and-push,
+    # and scan jobs and is triggered by the release branch or tags matching
     # the format (like v1.0.0).
     jobs:
       - build:
@@ -110,8 +110,6 @@ workflow:
           requires:
             - test
           filters:
-            branches:
-              only: release
             tags:
               only: /^v./
             branches:
