@@ -99,14 +99,15 @@ workflow:
       - build:
         filters:
           branches:
-            only: release
+            only: 
+             -release
       - test:
           requires:
             - build
           filters:
             branches:
               only: 
-              - release
+                - release
       - build-and-push:
           requires:
             - test
