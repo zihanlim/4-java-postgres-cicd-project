@@ -105,13 +105,15 @@ workflow:
             - build
           filters:
             branches:
-              only: release
+              only: 
+              - release
       - build-and-push:
           requires:
             - test
           filters:
             branches:
-              only: release
+              only: 
+                - release
             tags:
               only: /^v./
             branches:
