@@ -8,7 +8,7 @@ orbs:
 jobs:
   build:
     docker:
-      - image: maven:3.8.2-openjdk
+      - image: maven:3.8.2-openjdk-17
 
     steps:
       - checkout
@@ -16,7 +16,7 @@ jobs:
 
   test:
     docker:
-      - image: maven:3.8.2-openjdk
+      - image: maven:3.8.2-openjdk-17
 
     steps:
       - checkout
@@ -29,18 +29,18 @@ jobs:
       - checkout
       - docker/check
       - docker/build:
-          image: limzihan/education-space
+          image: limzihan/java-springboot-project-edu-space
           tag: <<pipeline.git.tag>>
       - docker/push:
-          image: limzihan/education-space
+          image: limzihan/java-springboot-project-edu-space
           tag: <<pipeline.git.tag>>
 
   scan:
     docker:
-      - image: maven:3.8-jdk
+      - image: maven:3.8.2-openjdk-17
       - image: docker:20.10.7
     environment:
-      IMAGE_NAME: limzihan/education-space
+      IMAGE_NAME: limzihan/java-springboot-project-edu-space
     steps:
       - checkout
       - setup_remote_docker
@@ -53,7 +53,7 @@ jobs:
 
   deploy:
     docker:
-      - image: maven:3.8.2-openjdk
+      - image: maven:3.8.2-openjdk-17
 
     steps:
       - setup_remote_docker
