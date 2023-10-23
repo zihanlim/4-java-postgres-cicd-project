@@ -58,7 +58,7 @@ jobs:
       # $IMAGE_NAME gets the value of the IMAGE_NAME from the environment defined above.
       - snyk/scan:
           docker-image-name: $IMAGE_NAME
-  deploy:
+  develop:
     docker:
       - image: circleci/eclipse-temurin:17-jdk-jammy
     steps:
@@ -81,13 +81,13 @@ workflow:
       - build:
         filters:
           branches:
-            only: deploy
+            only: develop
       - test:
           requires:
             - build
           filters:
             branches:
-              only: deploy
+              only: develop
       - scan:
           requires:
             - build
