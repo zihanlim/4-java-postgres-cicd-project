@@ -35,21 +35,21 @@ jobs:
           image: limzihan/education-space
           tag: <<pipeline.git.tag>>
 
-scan:
-  docker:
-    - image: maven:3.8-jdk-17
-    - image: docker:20.10.7
-  environment:
-    IMAGE_NAME: limzihan/education-space
-  steps:
-    - checkout
-    - setup_remote_docker
-    - run: |
-        echo "${!PARAM_DOCKER_PASSWORD}" | docker login -u "${!PARAM_DOCKER_USERNAME}" --password-stdin "$PARAM_REGISTRY"
-    - docker/check
-    - run: docker build -t $IMAGE_NAME .
-    - snyk/scan:
-        docker-image-name: $IMAGE_NAME
+  scan:
+    docker:
+      - image: maven:3.8-jdk-17
+      - image: docker:20.10.7
+    environment:
+      IMAGE_NAME: limzihan/education-space
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: |
+          echo "${!PARAM_DOCKER_PASSWORD}" | docker login -u "${!PARAM_DOCKER_USERNAME}" --password-stdin "$PARAM_REGISTRY"
+      - docker/check
+      - run: docker build -t $IMAGE_NAME .
+      - snyk/scan:
+          docker-image-name: $IMAGE_NAME
 
   deploy:
     docker:
