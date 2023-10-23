@@ -38,21 +38,33 @@ jobs:
   scan:
     docker:
       - image: maven:3.8.2-openjdk-17
-      - image: docker:20.10.7
     environment:
       IMAGE_NAME: limzihan/java-springboot-project-edu-space
     steps:
       - checkout
       - setup_remote_docker
-      # - run: |
-      #     echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin "$DOCKER_REGISTRY"
-      # - docker/check
-      # - run: docker build -t $IMAGE_NAME .
-      # - run:
-      #     name: Build Docker Image
-      #     command: docker build -t $IMAGE_NAME .
+      - docker/check
+      - run: docker build -t $IMAGE_NAME .
       - snyk/scan:
-          docker-image-name: limzihan/java-springboot-project-edu-space
+          docker-image-name: $IMAGE_NAME
+
+    # docker:
+    #   - image: maven:3.8.2-openjdk-17
+    #   - image: docker:20.10.7
+    # environment:
+    #   IMAGE_NAME: limzihan/java-springboot-project-edu-space
+    # steps:
+    #   - checkout
+    #   - setup_remote_docker
+    #   # - run: |
+    #   #     echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin "$DOCKER_REGISTRY"
+    #   # - docker/check
+    #   # - run: docker build -t $IMAGE_NAME .
+    #   # - run:
+    #   #     name: Build Docker Image
+    #   #     command: docker build -t $IMAGE_NAME .
+    #   - snyk/scan:
+    #       docker-image-name: limzihan/java-springboot-project-edu-space
 
   deploy:
     docker:
