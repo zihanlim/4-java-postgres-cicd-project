@@ -48,8 +48,11 @@ jobs:
       #     echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin "$DOCKER_REGISTRY"
       # - docker/check
       # - run: docker build -t $IMAGE_NAME .
+      # - run:
+      #     name: Build Docker Image
+      #     command: docker build -t $IMAGE_NAME .
       - snyk/scan:
-          docker-image-name: $IMAGE_NAME
+          docker-image-name: limzihan/java-springboot-project-edu-space
 
   deploy:
     docker:
