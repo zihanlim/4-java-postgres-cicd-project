@@ -8,14 +8,14 @@ orbs:
 jobs:
   build:
     docker:
-      - image: maven:3.6.3
+      - image: maven:3.8-jdk-17
     steps:
       - checkout
       - run: mvn clean install
 
   test:
     docker:
-      - image: maven:3.6.3
+      - image: maven:3.8-jdk-17
     steps:
       - checkout
       - run: mvn test
@@ -48,7 +48,7 @@ jobs:
 
   deploy:
     docker:
-      - image: maven:3.6.3
+      - image: maven:3.8-jdk-17
     steps:
       - setup_remote_docker
       - heroku/install
