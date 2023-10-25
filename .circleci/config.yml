@@ -98,10 +98,11 @@ workflows:
           filters:
             branches:
               only: release
-            tags:
-              only: /^v./
+            # tags:
+            #   only: /^v./
       - scan:
           requires:
             - build
       - deploy:
-          requires: - build-and-push
+          requires:
+            - build-and-push
