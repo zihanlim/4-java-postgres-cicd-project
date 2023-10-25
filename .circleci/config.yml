@@ -37,7 +37,7 @@ jobs:
 
   scan:
     docker:
-      - image: maven:3.8.2-openjdk-17
+      - image: cimg/openjdk:17
     environment:
       IMAGE_NAME: limzihan/java-springboot-project-edu-space:v1.0.0
     steps:
