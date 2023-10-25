@@ -1,4 +1,4 @@
-package sg.edu.ntu.simplecrm.service;
+package sg.edu.ntu.simplecrm2.service;
 
 public class DemoService {
 

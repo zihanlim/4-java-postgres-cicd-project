@@ -8,7 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import sg.edu.ntu.simplecrm.service.DemoService;
+import sg.edu.ntu.simplecrm2.service.DemoService;
 
 public class DemoServiceTest {
 

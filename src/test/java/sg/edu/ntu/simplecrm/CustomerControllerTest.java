@@ -12,7 +12,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import sg.edu.ntu.simplecrm.entity.Customer;
+import sg.edu.ntu.simplecrm2.entity.Customer;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 

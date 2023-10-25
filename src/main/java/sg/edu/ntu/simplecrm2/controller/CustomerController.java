@@ -1,4 +1,4 @@
-package sg.edu.ntu.simplecrm.controller;
+package sg.edu.ntu.simplecrm2.controller;
 
 import java.util.List;
 
@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.AllArgsConstructor;
-import sg.edu.ntu.simplecrm.entity.Customer;
-import sg.edu.ntu.simplecrm.entity.Interaction;
-import sg.edu.ntu.simplecrm.service.CustomerService;
+import sg.edu.ntu.simplecrm2.entity.Customer;
+import sg.edu.ntu.simplecrm2.entity.Interaction;
+import sg.edu.ntu.simplecrm2.service.CustomerService;
 
 @RestController
 @RequestMapping("/customers")

@@ -1,4 +1,4 @@
-package sg.edu.ntu.simplecrm.entity;
+package sg.edu.ntu.simplecrm2.entity;
 
 import java.util.List;
 

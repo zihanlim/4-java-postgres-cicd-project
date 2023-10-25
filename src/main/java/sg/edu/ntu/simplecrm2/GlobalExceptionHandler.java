@@ -1,4 +1,4 @@
-package sg.edu.ntu.simplecrm;
+package sg.edu.ntu.simplecrm2;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -11,8 +11,8 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import sg.edu.ntu.simplecrm.exception.CustomerNotFoundException;
-import sg.edu.ntu.simplecrm.exception.InteractionNotFoundException;
+import sg.edu.ntu.simplecrm2.exception.CustomerNotFoundException;
+import sg.edu.ntu.simplecrm2.exception.InteractionNotFoundException;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {

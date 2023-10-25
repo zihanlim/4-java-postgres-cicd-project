@@ -1,4 +1,4 @@
-package sg.edu.ntu.simplecrm;
+package sg.edu.ntu.simplecrm2;
 
 import java.time.LocalDateTime;
 

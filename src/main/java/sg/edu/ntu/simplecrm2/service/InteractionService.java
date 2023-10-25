@@ -1,8 +1,8 @@
-package sg.edu.ntu.simplecrm.service;
+package sg.edu.ntu.simplecrm2.service;
 
 import java.util.List;
 
-import sg.edu.ntu.simplecrm.entity.Interaction;
+import sg.edu.ntu.simplecrm2.entity.Interaction;
 
 public interface InteractionService {
 

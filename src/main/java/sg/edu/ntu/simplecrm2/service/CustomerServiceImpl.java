@@ -1,15 +1,15 @@
-package sg.edu.ntu.simplecrm.service;
+package sg.edu.ntu.simplecrm2.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
-import sg.edu.ntu.simplecrm.entity.Customer;
-import sg.edu.ntu.simplecrm.entity.Interaction;
-import sg.edu.ntu.simplecrm.exception.CustomerNotFoundException;
-import sg.edu.ntu.simplecrm.repository.CustomerRepository;
-import sg.edu.ntu.simplecrm.repository.InteractionRepository;
+import sg.edu.ntu.simplecrm2.entity.Customer;
+import sg.edu.ntu.simplecrm2.entity.Interaction;
+import sg.edu.ntu.simplecrm2.exception.CustomerNotFoundException;
+import sg.edu.ntu.simplecrm2.repository.CustomerRepository;
+import sg.edu.ntu.simplecrm2.repository.InteractionRepository;
 
 @Service
 @AllArgsConstructor

@@ -1,13 +1,13 @@
-package sg.edu.ntu.simplecrm.service;
+package sg.edu.ntu.simplecrm2.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
-import sg.edu.ntu.simplecrm.entity.Interaction;
-import sg.edu.ntu.simplecrm.exception.InteractionNotFoundException;
-import sg.edu.ntu.simplecrm.repository.InteractionRepository;
+import sg.edu.ntu.simplecrm2.entity.Interaction;
+import sg.edu.ntu.simplecrm2.exception.InteractionNotFoundException;
+import sg.edu.ntu.simplecrm2.repository.InteractionRepository;
 
 @Service
 @AllArgsConstructor

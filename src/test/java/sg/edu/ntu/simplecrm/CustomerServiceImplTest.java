@@ -13,10 +13,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import sg.edu.ntu.simplecrm.entity.Customer;
-import sg.edu.ntu.simplecrm.exception.CustomerNotFoundException;
-import sg.edu.ntu.simplecrm.repository.CustomerRepository;
-import sg.edu.ntu.simplecrm.service.CustomerServiceImpl;
+import sg.edu.ntu.simplecrm2.entity.Customer;
+import sg.edu.ntu.simplecrm2.exception.CustomerNotFoundException;
+import sg.edu.ntu.simplecrm2.repository.CustomerRepository;
+import sg.edu.ntu.simplecrm2.service.CustomerServiceImpl;
 
 @SpringBootTest
 public class CustomerServiceImplTest {

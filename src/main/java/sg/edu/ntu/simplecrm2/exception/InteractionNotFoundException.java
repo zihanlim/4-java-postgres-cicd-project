@@ -1,4 +1,4 @@
-package sg.edu.ntu.simplecrm.exception;
+package sg.edu.ntu.simplecrm2.exception;
 
 public class InteractionNotFoundException extends RuntimeException {
   public InteractionNotFoundException(Long id) {
