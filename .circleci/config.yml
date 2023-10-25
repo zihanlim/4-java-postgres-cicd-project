@@ -49,11 +49,9 @@ jobs:
       - snyk/scan:
           docker-image-name: $IMAGE_NAME
           severity-threshold: medium
-
   deploy:
     docker:
       - image: maven:3.8.2-openjdk-17
-
     steps:
       - setup_remote_docker
       - heroku/install
@@ -106,5 +104,4 @@ workflows:
           requires:
             - build
       - deploy:
-          requires:
-            - build-and-push
+          requires: - build-and-push
