@@ -32,13 +32,13 @@ jobs:
           command: echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
       - docker/check
       - run:
-        name: Build Docker Image
-        command: |
-          docker build -t limzihan/java-springboot-project-edu-space:v1.0.0 .
+          name: Build Docker Image
+          command: |
+            docker build -t limzihan/java-springboot-project-edu-space:v1.0.0 .
       - run:
-        name: Push Docker Image
-        command: |
-          docker push limzihan/java-springboot-project-edu-space:v1.0.0
+          name: Push Docker Image
+          command: |
+            docker push limzihan/java-springboot-project-edu-space:v1.0.0
 
       # - docker/build:
       #     image: limzihan/java-springboot-project-edu-space
