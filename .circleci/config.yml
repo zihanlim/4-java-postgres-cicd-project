@@ -98,8 +98,8 @@ workflows:
           filters:
             branches:
               only: release
-            # tags:
-            #   only: /^v./
+            tags:
+              only: /^v./
       - scan:
           requires:
             - build
