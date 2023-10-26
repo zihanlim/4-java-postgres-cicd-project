@@ -30,16 +30,16 @@ jobs:
       - checkout
       - docker/check
       - docker/build:
-          image: limzihan/java-springboot-project-edu-space:v1.0.0
+          image: limzihan/java-springboot-project-edu-space
           tag: <<pipeline.git.tag>>
       - docker/push:
-          image: limzihan/java-springboot-project-edu-space:v1.0.0
+          image: limzihan/java-springboot-project-edu-space
           tag: <<pipeline.git.tag>>
   scan:
     docker:
       - image: cimg/openjdk:17.0.8
     environment:
-      IMAGE_NAME: limzihan/java-springboot-project-edu-space:v1.0.0
+      IMAGE_NAME: limzihan/java-springboot-project-edu-space
     steps:
       - checkout
       - setup_remote_docker
