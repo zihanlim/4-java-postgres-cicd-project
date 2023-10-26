@@ -110,3 +110,6 @@ workflows:
       - deploy:
           requires:
             - build-and-push
+          filters:
+            tags:
+              only: /^v./
